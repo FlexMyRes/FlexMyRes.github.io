@@ -32,15 +32,15 @@ def info():
 
 @app.route("/portfolio", methods = ['POST'])
 def portfolio():
-            #fname = request.form['firstname']
-            #lname = request.form['lastname']
+            # fname = request.form['firstname']
+            # lname = request.form['lastname']
             text=read_pdf(filename)
             name=extract_name(text)
             hard,soft = extract_skills2(text)
             hard_set,soft_set=graph_hardsoft(hard,soft)
             hard_plot = hard_skills[0].value_counts().plot.pie
             soft_plot = soft_skills[0].value_counts().plot(kind='bar')
-            return render_template("index.html",  name=name, hard_plot=hard_plot, soft_plot=soft_plot)
+            return render_template("index.html", name=name, soft_plot=soft_plot, hard_plot=hard_plot)
 
 @app.route("/portfolio", methods = ['POST'])
 def projects():
@@ -50,10 +50,13 @@ def projects():
             desc2 = request.form['project2description']
             proj3 = request.form['project3name']
             desc3 = request.form['project3description']
+            proj4 = request.form['project4name']
+            desc4 = request.form['project4description']
             return render_template("index.html", project1name = proj1, 
             project1description = desc1, project2name = proj2, 
             project2description = desc2, project3name = proj3, 
-            project3description = desc3)
+            project3description = desc3, project3name = proj4, 
+            project3description = desc4)
 
 @app.route("/portfolio", methods = ['POST'])
 def social():
