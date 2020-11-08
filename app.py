@@ -32,8 +32,6 @@ def info():
 
 @app.route("/portfolio", methods = ['POST'])
 def portfolio():
-            # fname = request.form['firstname']
-            # lname = request.form['lastname']
             text=read_pdf(filename)
             name=extract_name(text)
             hard,soft = extract_skills2(text)
@@ -60,11 +58,13 @@ def projects():
 
 @app.route("/portfolio", methods = ['POST'])
 def social():
-            soc1 = request.form['social1']
-            soc2 = request.form['social2']
-            soc3 = request.form['social3']
-            return render_template("index.html", social1 = soc1,
-            social2 = soc2, social3 = soc3)
+            soc1 = request.form['linkedin']
+            soc2 = request.form['github']
+            #soc3 = request.form['social3']
+            get_repo(url)
+            repo = get_repo(url)
+            return render_template("index.html", linkedin = soc1,
+            github = soc2, repo=repo)
         
 if __name__ == "__main__":
     app.run(debug=True)   
