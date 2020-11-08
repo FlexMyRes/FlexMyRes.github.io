@@ -6,7 +6,6 @@
 
 import PyPDF2
 from github import Github
-from io import StringIO
 import pandas as pd
 import spacy
 import numpy as np
@@ -17,7 +16,6 @@ from spacy.matcher import PhraseMatcher
 from spacy.matcher import Matcher
 from spacy.tokens import Doc
 from collections import OrderedDict
-import seaborn as sns
 #initialize matcher
 matcher = Matcher(nlp.vocab)
 
